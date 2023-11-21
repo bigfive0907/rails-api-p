@@ -1,0 +1,27 @@
+---
+openapi: 3.0.3
+info:
+  title: myapp
+  version: 1.0.0
+servers: []
+paths:
+  "/api/v1/posts":
+    get:
+      summary: index
+      tags:
+      - Api::V1::Post
+      responses:
+        '200':
+          description: Get Posts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: {}
+                required:
+                - data
+              example:
+                data: []
