@@ -12,15 +12,22 @@
 #   )
 # end
 
-User.all.each do |user|
-  user.tweets.create!(
-    body: 'テキストテキストテキストテキスト'
-  )
-end
+# User.all.each do |user|
+#   user.tweets.create!(
+#     body: 'テキストテキストテキストテキスト'
+#   )
+# end
+
+# 4.times do |n|
+#   Favorite.create!(
+#     user_id: n + 1,
+#     tweet_id: n + 1
+#   )
+# end
 
 4.times do |n|
-  Favorite.create!(
-    user_id: n + 1,
-    tweet_id: n + 1
+  Relationship.create!(
+    follower_id: n + 1,
+    following_id: 5-n
   )
 end

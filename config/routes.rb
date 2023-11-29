@@ -74,6 +74,7 @@ Rails.application.routes.draw do
       resources :users
       resources :tweets
       resources :favorites
+      resources :relationships
     end
   end
 end
