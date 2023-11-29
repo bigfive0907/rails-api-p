@@ -1,13 +1,44 @@
 # frozen_string_literal: true
+
 # == Route Map
 #
 #                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
+#                                   tweets GET    /tweets(.:format)                                                                                 tweets#index
+#                                          POST   /tweets(.:format)                                                                                 tweets#create
+#                                    tweet GET    /tweets/:id(.:format)                                                                             tweets#show
+#                                          PATCH  /tweets/:id(.:format)                                                                             tweets#update
+#                                          PUT    /tweets/:id(.:format)                                                                             tweets#update
+#                                          DELETE /tweets/:id(.:format)                                                                             tweets#destroy
+#                                    users GET    /users(.:format)                                                                                  users#index
+#                                          POST   /users(.:format)                                                                                  users#create
+#                                     user GET    /users/:id(.:format)                                                                              users#show
+#                                          PATCH  /users/:id(.:format)                                                                              users#update
+#                                          PUT    /users/:id(.:format)                                                                              users#update
+#                                          DELETE /users/:id(.:format)                                                                              users#destroy
 #                             api_v1_posts GET    /api/v1/posts(.:format)                                                                           api/v1/posts#index
 #                                          POST   /api/v1/posts(.:format)                                                                           api/v1/posts#create
 #                              api_v1_post GET    /api/v1/posts/:id(.:format)                                                                       api/v1/posts#show
 #                                          PATCH  /api/v1/posts/:id(.:format)                                                                       api/v1/posts#update
 #                                          PUT    /api/v1/posts/:id(.:format)                                                                       api/v1/posts#update
 #                                          DELETE /api/v1/posts/:id(.:format)                                                                       api/v1/posts#destroy
+#                             api_v1_users GET    /api/v1/users(.:format)                                                                           api/v1/users#index
+#                                          POST   /api/v1/users(.:format)                                                                           api/v1/users#create
+#                              api_v1_user GET    /api/v1/users/:id(.:format)                                                                       api/v1/users#show
+#                                          PATCH  /api/v1/users/:id(.:format)                                                                       api/v1/users#update
+#                                          PUT    /api/v1/users/:id(.:format)                                                                       api/v1/users#update
+#                                          DELETE /api/v1/users/:id(.:format)                                                                       api/v1/users#destroy
+#                            api_v1_tweets GET    /api/v1/tweets(.:format)                                                                          api/v1/tweets#index
+#                                          POST   /api/v1/tweets(.:format)                                                                          api/v1/tweets#create
+#                             api_v1_tweet GET    /api/v1/tweets/:id(.:format)                                                                      api/v1/tweets#show
+#                                          PATCH  /api/v1/tweets/:id(.:format)                                                                      api/v1/tweets#update
+#                                          PUT    /api/v1/tweets/:id(.:format)                                                                      api/v1/tweets#update
+#                                          DELETE /api/v1/tweets/:id(.:format)                                                                      api/v1/tweets#destroy
+#                         api_v1_favorites GET    /api/v1/favorites(.:format)                                                                       api/v1/favorites#index
+#                                          POST   /api/v1/favorites(.:format)                                                                       api/v1/favorites#create
+#                          api_v1_favorite GET    /api/v1/favorites/:id(.:format)                                                                   api/v1/favorites#show
+#                                          PATCH  /api/v1/favorites/:id(.:format)                                                                   api/v1/favorites#update
+#                                          PUT    /api/v1/favorites/:id(.:format)                                                                   api/v1/favorites#update
+#                                          DELETE /api/v1/favorites/:id(.:format)                                                                   api/v1/favorites#destroy
 #            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
 #               rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
 #            rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -35,9 +66,14 @@
 #                     rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  resources :tweets
+  resources :users
   namespace 'api' do
     namespace 'v1' do
       resources :posts
+      resources :users
+      resources :tweets
+      resources :favorites
     end
   end
 end
